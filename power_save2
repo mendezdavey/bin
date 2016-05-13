@@ -1,0 +1,14 @@
+#!/bin/bash
+#Script to save power on linux
+#sudo powertop --auto-tune
+#tlp start
+bluetooth off
+echo 0 > /proc/sys/vm/swappiness
+echo "swappiness is:"
+cat /proc/sys/vm/swappiness
+#echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
+#echo "no turbo is:"
+#cat /sys/devices/system/cpu/intel_pstate/no_turbo
+#echo 60 > /sys/devices/system/cpu/intel_pstate/max*
+#cat /sys/devices/system/cpu/intel_pstate/max*
+
