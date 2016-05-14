@@ -1,9 +1,29 @@
-#!/bin/bash -x
+#!/bin/bash 
 # A script for connecting to wifi part1 
-ip link set wlp2s0 up
-wpa_supplicant -B -D wext -i wlp2s0 -c /etc/wpa_supplicant.conf
+# 1. Find the name of the device
+foo=$(iw dev | grep -i w)
+foo2="Interface wlan0"
+name=""
+for (( i=0; i<${#foo}; i++ )); do
+  echo "${foo:$i:1}"
+  
+  if [[ ${foo:$i:1} = 'w' ]]; then
+	echo "found a w"
+        echo $i
+        echo ${foo:$i:$i}
+	name=${foo:$i:$i}
+  fi 
+done
+#${#foo} expands to the length of foo. ${foo:$i:1} expands to the substring starting at position $i of length 1.
+#http://stackoverflow.com/questions/10551981/how-to-perform-a-for-loop-on-each-character-in-a-string-in-bash/10552175#10552175
+ip link show $name
+#ip link set $name up
+#iw $name link
+x=`iw $name link`
+echo $x
+wpa_supplicant -B -D wext -i $name -c /etc/wpa_supplicant.conf
 sleep 5
-if [ "$(iw wlp2s0 link)" != "Not connected." ]; then 
+if [ "$x" != "Not connected." ]; then 
 	echo "Established a connection"
 	sleep 1 
 	echo "running dhclient wlp2s0"
