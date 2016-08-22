@@ -1,0 +1,44 @@
+#!/bin/bash -x
+# musicDownloads_toMusicFolder - a script to organize my music.
+
+#1 
+# Organize PDF's and TXT's
+# Make required directories and move the files.
+mkdir -p /Users/david/Downloads/documents
+mv /Users/david/Downloads/*.pdf /Users/david/Downloads/documents/
+mv /Users/david/Downloads/*.txt /Users/david/Downloads/documents/
+#2
+# Commands to organize music files.
+# Make a music directories in the Downloads directory if they don't exist.
+mkdir -p /Users/david/Downloads/music/ogg
+mkdir -p /Users/david/Downloads/music/mp3
+# Move the music files to the created directories.
+mv /Users/david/Downloads/*.ogg /Users/david/Downloads/music/ogg/
+mv /Users/david/Downloads/*.mp3 /Users/david/Downloads/music/mp3/
+# 3
+# Command to organize image files.
+mkdir -p /Users/david/Downloads/images/png
+mkdir -p /Users/david/Downloads/images/jpg
+mv /Users/david/Downloads/*.png /Users/david/Downloads/images/
+mv /Users/david/Downloads/*.jpg /Users/david/Downloads/images/
+# 4
+# Commands to organize Disk Image Files
+mkdir -p /Users/david/Downloads/dmg
+mv /Users/david/Downloads/*.dmg /Users/david/Downloads/dmg/
+# 5
+# Organize Iso Files
+mkdir -p /Users/david/Downloads/iso
+mv /Users/david/Downloads/*.iso /Users/david/Downloads/iso/
+# 6
+# Delete undesired files.
+rm -rf /Users/david/Downloads/*.duck
+rm -rf /Users/david/Downloads/*.zip
+rm -rf /Users/david/Downloads/*.swf
+rm -rf /Users/david/Downloads/*.download
+rm -rf /Users/david/Downloads/*.xml
+rm -rf /Users/david/Downloads/*.torrent
+rm -rf /Users/david/Downloads/*.ics
+rm -rf /Users/david/Downloads/*.md
+rm -rf /Users/david/Downloads/*WebDisk*
+
+
